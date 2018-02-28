@@ -41,7 +41,14 @@ select{background:#EDF3F2; border-color:#D7DBDA; color:#7B7C7C;  font-size: 13px
 .login_user,.login_password{width: 452px; height: 40px; margin-bottom: 14px; border-radius: 4px; background: #E9F2F0; overflow: hidden;}
 .login_user span,.login_password span{float: left; display: inline-block; width: 62px; height: 40px;}
 .login_user span{ background: url(../image/icon_user.png) center no-repeat #E8F2F0;}
+/*.login_yzm span{ background: url(../image/yz1.png) center no-repeat #E8F2F0;}*/
 .login_user input,.login_password input{width: 390px; height: 40px; border: 0px; background: transparent;}
+.login_yzm{box-sizing: border-box;overflow: hidden;display: inline;float: left}
+.login_yzm input{width: 335px; height: 40px;  border: 1px solid #ccc;border-radius: 3px;padding-left: 61px;float: left;
+	display: inline-block;
+background: url("../image/icon_yzm.png") no-repeat 18px center;background-size: 23px 23px;}
+.login_yzm img{display: inline-block;float: right;}
+.login_yzm{width: 452px; height: 40px; margin-bottom: 14px; border-radius: 4px; overflow: hidden;}
 .login_user input:focus,.login_password input:focus{outline: none;}
 .login_password span{background: url(../image/icon_password.png) center no-repeat #E8F2F0;}
 .login_button_group{width: 100%; padding-top: 22px;}

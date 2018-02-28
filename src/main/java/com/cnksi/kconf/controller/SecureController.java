@@ -18,9 +18,9 @@ public class SecureController extends Controller {
     public void index() {
         if (JFinal.me().getConstants().getDevMode()) {
             List<User> users = User.me.findAll();
-            if(users.size() < 1 ) throw new RuntimeException("数据库中没有用户，请添加用户！");
-            
-			User user = users.get(0);
+            if (users.size() < 1) throw new RuntimeException("数据库中没有用户，请添加用户！");
+
+            User user = users.get(0);
             setSessionAttr(KConfig.SESSION_USER_KEY, user);
             setSessionAttr(KConfig.SESSION_DEPT_KEY, user.getDepartment());
             setSessionAttr("appid", KConfig.appid);
@@ -36,9 +36,9 @@ public class SecureController extends Controller {
     public void dologin() {
         String error = "";
         // 校验验证码
-//        if (!validateCaptcha("captcha")) {
-//            error = "登录失败，验证码错误";
-//        } else {
+        if (!validateCaptcha("captcha")) {
+            error = "登录失败，验证码错误";
+        } else {
             error = "登录失败,您输入的账号/密码不正确";
             String username = getPara("username");
             String password = getPara("password");
@@ -49,14 +49,13 @@ public class SecureController extends Controller {
                 setSessionAttr(KConfig.SESSION_DEPT_KEY, user.getDepartment());
                 error = null;
             }
-//        }
+        }
 
         setSessionAttr("appid", KConfig.appid);
 
         if (StrKit.isBlank(error)) {
             redirect("/secure/main");
         } else {
-
             setAttr("error", error);
             renderLoginJsp();
         }
