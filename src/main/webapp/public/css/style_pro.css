@@ -1,0 +1,15 @@
+.pro_wrap{position: relative;width: 100%;padding: 30px 10px 15px 10px}
+.pro_lcb_title{background-color: #dbf1ed;}
+.pro_lcb_title th,.pro_lcb_title .fixedtableCol{color: #03b9a0;background-color: #dbf1ed !important;}
+.data_load{color: #d9534f}
+.pro_lcb_title a{margin-right: 30px;cursor: pointer}
+.cursorP{cursor: pointer}
+.pro_yslc_lefttitle{position: relative;display: inline-block;width: 13%;float: left}
+.pro_yslc_lefttitle li{list-style: none;height: 45px;line-height: 45px;text-align: center;
+    background-color: #e9f3f1;color:#797665;width: 100%;font-size: 14px;font-weight: 500 ;cursor: pointer}
+.pro_yslc_lefttitle li:hover{background-color: white;}
+    
+    
+.yslcTable span{margin-left: 6px}
+.pro_yslc_lefttitle-active{background-color: #ffffff !important;color: #5e6b6a !important;}
+.jgyys-btn{padding: 5px 10px; display: inline-block;}

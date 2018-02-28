@@ -1,0 +1,809 @@
+Table: card
+------------------+---------------+------+-----+-------------------+---------
+ Field            | Type          | Null | Key | Default           | Remarks 
+------------------+---------------+------+-----+-------------------+---------
+ id               | VARCHAR(50)   | NO   | PRI |                   | ID      
+ name             | VARCHAR(100)  | YES  |     |                   | 名称      
+ flow             | VARCHAR(50)   | YES  |     |                   | 验收流程key，数据来源config表
+ type             | VARCHAR(50)   | YES  |     |                   | 验收类型的key
+ dtid             | VARCHAR(50)   | YES  |     |                   | 设备类型id，数据来源device_type
+ showgcmc         | INT(10)       | YES  |     | 0                 | 是否展示工程名称。1展示，0不展示
+ showsjdw         | INT(10)       | YES  |     | 0                 | 是否展示设计单位。1展示，0不展示
+ showysdw         | INT(10)       | YES  |     | 0                 | 是否展示验收单位。1展示，0不展示
+ showysrq         | INT(10)       | YES  |     | 0                 | 是否展示验收日期。1展示，0不展示
+ showsccj         | INT(10)       | YES  |     | 0                 | 是否展示生产厂家。1展示，0不展示
+ showsbxh         | INT(10)       | YES  |     | 0                 | 是否展示设备型号。1展示，0不展示
+ showscgh         | INT(10)       | YES  |     | 0                 | 是否展示生产工号。1展示，0不展示
+ showccbh         | INT(10)       | YES  |     | 0                 | 是否展示出厂编号。1展示，0不展示
+ showbdsmc        | INT(10)       | YES  |     | 0                 | 是否展示变电所名称。1展示，0不展示
+ showsbmcbh       | INT(10)       | YES  |     | 0                 | 是否展示设备名称编号。1展示，0不展示
+ showjldw         | INT(10)       | YES  |     | 0                 | 是否展示监理单位。1展示，0不展示
+ showsgdw         | INT(10)       | YES  |     | 0                 | 是否展示施工单位。1展示，0不展示
+ showazdw         | INT(10)       | YES  |     | 0                 | 是否展示安装单位。1展示，0不展示
+ sort             | INT(10)       | YES  |     | 0                 | 排序      
+ remark           | TEXT(65535)   | YES  |     |                   | 备注      
+ dlt              | INT(10)       | YES  |     | 0                 | 是否删除：1删除、0不删除
+ enabled          | INT(10)       | YES  |     | 0                 | 是否删除：1删除、0不删除
+ createtime       | TIMESTAMP(19) | YES  |     | CURRENT_TIMESTAMP | 创建时间    
+ updatetime       | TIMESTAMP(19) | YES  |     | CURRENT_TIMESTAMP | 更新时间    
+ last_modify_time | TIMESTAMP(19) | YES  |     | CURRENT_TIMESTAMP | 最后更新时间  
+------------------+---------------+------+-----+-------------------+---------
+
+Table: card_copy
+------------------+---------------+------+-----+-------------------+---------
+ Field            | Type          | Null | Key | Default           | Remarks 
+------------------+---------------+------+-----+-------------------+---------
+ id               | VARCHAR(50)   | NO   | PRI |                   | ID      
+ cid              | VARCHAR(50)   | YES  |     |                   | 标准卡ID   
+ name             | VARCHAR(100)  | YES  |     |                   | 抄录名称    
+ unit             | VARCHAR(50)   | YES  |     |                   | 抄录单位    
+ min              | DOUBLE(22)    | YES  |     |                   | 超标上限    
+ max              | DOUBLE(22)    | YES  |     |                   | 超标下限    
+ ciid             | VARCHAR(50)   | YES  |     |                   | 抄录小项ID  
+ sort             | INT(10)       | YES  |     | 0                 | 顺序      
+ remark           | TEXT(65535)   | YES  |     |                   | 备注      
+ dlt              | INT(10)       | YES  |     | 0                 | 是否删除：1删除、0不删除
+ enabled          | INT(10)       | YES  |     | 0                 | 是否删除：1删除、0不删除
+ createtime       | TIMESTAMP(19) | YES  |     | CURRENT_TIMESTAMP | 创建时间    
+ updatetime       | TIMESTAMP(19) | YES  |     | CURRENT_TIMESTAMP | 更新时间    
+ last_modify_time | TIMESTAMP(19) | YES  |     | CURRENT_TIMESTAMP | 最后更新时间  
+------------------+---------------+------+-----+-------------------+---------
+
+Table: card_item
+------------------+---------------+------+-----+-------------------+---------
+ Field            | Type          | Null | Key | Default           | Remarks 
+------------------+---------------+------+-----+-------------------+---------
+ id               | VARCHAR(50)   | NO   | PRI |                   | ID      
+ name             | VARCHAR(100)  | YES  |     |                   | 名称      
+ checktype        | VARCHAR(50)   | YES  |     |                   | 检查方式    
+ cid              | VARCHAR(50)   | YES  |     |                   | 标准卡ID   
+ citid            | VARCHAR(50)   | YES  |     |                   | 验收类型ID  
+ sort             | INT(10)       | YES  |     | 0                 | 排序      
+ remark           | TEXT(65535)   | YES  |     |                   | 备注      
+ dlt              | INT(10)       | YES  |     | 0                 | 是否删除：1删除、0不删除
+ enabled          | INT(10)       | YES  |     | 0                 | 是否删除：1删除、0不删除
+ createtime       | TIMESTAMP(19) | YES  |     | CURRENT_TIMESTAMP | 创建时间    
+ updatetime       | TIMESTAMP(19) | YES  |     | CURRENT_TIMESTAMP | 更新时间    
+ last_modify_time | TIMESTAMP(19) | YES  |     | CURRENT_TIMESTAMP | 最后更新时间  
+------------------+---------------+------+-----+-------------------+---------
+
+Table: card_item_type
+------------------+---------------+------+-----+-------------------+---------
+ Field            | Type          | Null | Key | Default           | Remarks 
+------------------+---------------+------+-----+-------------------+---------
+ id               | VARCHAR(50)   | NO   | PRI |                   | ID      
+ name             | VARCHAR(100)  | YES  |     |                   | 名称      
+ cid              | VARCHAR(50)   | YES  |     |                   | 标准卡Id   
+ sort             | INT(10)       | YES  |     | 0                 | 排序      
+ remark           | TEXT(65535)   | YES  |     |                   | 备注      
+ dlt              | INT(10)       | YES  |     | 0                 | 是否删除：1删除、0不删除
+ enabled          | INT(10)       | YES  |     | 0                 | 是否删除：1删除、0不删除
+ createtime       | TIMESTAMP(19) | YES  |     | CURRENT_TIMESTAMP | 创建时间    
+ updatetime       | TIMESTAMP(19) | YES  |     | CURRENT_TIMESTAMP | 更新时间    
+ last_modify_time | TIMESTAMP(19) | YES  |     | CURRENT_TIMESTAMP | 最后更新时间  
+------------------+---------------+------+-----+-------------------+---------
+
+Table: card_standard
+------------------+---------------+------+-----+-------------------+---------
+ Field            | Type          | Null | Key | Default           | Remarks 
+------------------+---------------+------+-----+-------------------+---------
+ id               | VARCHAR(50)   | NO   | PRI |                   | ID      
+ description      | TEXT(65535)   | YES  |     |                   | 验收标准内容  
+ cid              | VARCHAR(50)   | YES  |     |                   | 标准卡ID   
+ ciid             | VARCHAR(50)   | YES  |     |                   | 验收小项Id  
+ sort             | INT(10)       | YES  |     | 0                 | 排序      
+ remark           | TEXT(65535)   | YES  |     |                   | 备注      
+ dlt              | INT(10)       | YES  |     | 0                 | 是否删除：1删除、0不删除
+ enabled          | INT(10)       | YES  |     | 0                 | 是否删除：1删除、0不删除
+ createtime       | TIMESTAMP(19) | YES  |     | CURRENT_TIMESTAMP | 创建时间    
+ updatetime       | TIMESTAMP(19) | YES  |     | CURRENT_TIMESTAMP | 更新时间    
+ last_modify_time | TIMESTAMP(19) | YES  |     | CURRENT_TIMESTAMP | 最后更新时间  
+------------------+---------------+------+-----+-------------------+---------
+
+Table: card_type
+------------------+---------------+------+-----+-------------------+---------
+ Field            | Type          | Null | Key | Default           | Remarks 
+------------------+---------------+------+-----+-------------------+---------
+ id               | VARCHAR(50)   | NO   | PRI |                   | ID      
+ key              | VARCHAR(50)   | YES  |     |                   | 不会改变的内容，可以在代码中使用
+ name             | VARCHAR(200)  | YES  |     |                   | 显示的内容   
+ flow             | VARCHAR(50)   | YES  |     |                   | 验收流程的key
+ remark           | TEXT(65535)   | YES  |     |                   | 备注      
+ sort             | INT(10)       | YES  |     | 0                 | 排序      
+ dlt              | INT(10)       | YES  |     | 0                 | 是否删除：1删除、0不删除
+ enabled          | INT(10)       | YES  |     | 0                 | 是否删除：1删除、0不删除
+ createtime       | TIMESTAMP(19) | YES  |     | CURRENT_TIMESTAMP | 创建时间    
+ updatetime       | TIMESTAMP(19) | YES  |     | CURRENT_TIMESTAMP | 更新时间    
+ last_modify_time | TIMESTAMP(19) | YES  |     | CURRENT_TIMESTAMP | 最后更新时间  
+------------------+---------------+------+-----+-------------------+---------
+
+Table: count_device
+------------------+---------------+------+-----+-------------------+---------
+ Field            | Type          | Null | Key | Default           | Remarks 
+------------------+---------------+------+-----+-------------------+---------
+ id               | VARCHAR(50)   | NO   | PRI |                   | ID      
+ tid              | VARCHAR(50)   | YES  |     |                   | 任务ID    
+ ctid             | VARCHAR(50)   | YES  |     |                   | 到货清点任务ID
+ pid              | VARCHAR(50)   | YES  |     |                   | 项目ID    
+ dtid             | VARCHAR(50)   | YES  |     |                   | 设别大类的ID 
+ sdtid            | VARCHAR(50)   | YES  |     |                   | 设备小类ID 关联DeviceType
+ name             | VARCHAR(100)  | YES  |     |                   | 设备名称    
+ deviceno         | VARCHAR(100)  | YES  |     |                   | 设备型号    
+ amount           | INT(10)       | YES  |     | 0                 | 数量      
+ time             | DATE(10)      | YES  |     |                   | 到货时间    
+ place            | VARCHAR(200)  | YES  |     |                   | 存放地点    
+ counter          | VARCHAR(200)  | YES  |     |                   | 清点人员    
+ remark           | TEXT(65535)   | YES  |     |                   | 备注      
+ dlt              | INT(10)       | YES  |     | 0                 | 是否删除：1删除、0不删除
+ enabled          | INT(10)       | YES  |     | 0                 | 是否删除：1删除、0不删除
+ createtime       | TIMESTAMP(19) | YES  |     | CURRENT_TIMESTAMP | 创建时间    
+ updatetime       | TIMESTAMP(19) | YES  |     | CURRENT_TIMESTAMP | 更新时间    
+ last_modify_time | TIMESTAMP(19) | YES  |     | CURRENT_TIMESTAMP | 最后更新时间  
+------------------+---------------+------+-----+-------------------+---------
+
+Table: count_task
+------------------+---------------+------+-----+-------------------+---------
+ Field            | Type          | Null | Key | Default           | Remarks 
+------------------+---------------+------+-----+-------------------+---------
+ id               | VARCHAR(50)   | NO   | PRI |                   | ID      
+ tid              | VARCHAR(50)   | YES  |     |                   | 任务ID    
+ flow             | VARCHAR(50)   | YES  |     |                   | 验收流程key，数据来源config表
+ type             | VARCHAR(50)   | YES  |     |                   | 验收类型的key
+ imgs             | VARCHAR(500)  | YES  |     |                   | 到货清单，多个用逗号分开
+ remark           | TEXT(65535)   | YES  |     |                   | 备注      
+ dlt              | INT(10)       | YES  |     | 0                 | 是否删除：1删除、0不删除
+ enabled          | INT(10)       | YES  |     | 0                 | 是否删除：1删除、0不删除
+ createtime       | TIMESTAMP(19) | YES  |     | CURRENT_TIMESTAMP | 创建时间    
+ updatetime       | TIMESTAMP(19) | YES  |     | CURRENT_TIMESTAMP | 更新时间    
+ last_modify_time | TIMESTAMP(19) | YES  |     | CURRENT_TIMESTAMP | 最后更新时间  
+------------------+---------------+------+-----+-------------------+---------
+
+Table: device_field
+------------------+---------------+------+-----+-------------------+---------
+ Field            | Type          | Null | Key | Default           | Remarks 
+------------------+---------------+------+-----+-------------------+---------
+ id               | VARCHAR(50)   | NO   | PRI |                   | ID      
+ dtid             | VARCHAR(50)   | YES  |     |                   | device_type表ID
+ name             | VARCHAR(200)  | YES  |     |                   | 名称      
+ unit             | VARCHAR(200)  | YES  |     |                   | 单位      
+ type             | VARCHAR(50)   | YES  |     |                   | 运行参数、物理参数
+ input_type       | VARCHAR(50)   | YES  |     | text              | 输入类型：date,number,text
+ default_value    | VARCHAR(50)   | YES  |     |                   | project.name 表和字段名
+ remark           | TEXT(65535)   | YES  |     |                   | 备注      
+ sort             | INT(10)       | YES  |     | 0                 | 排序      
+ dlt              | INT(10)       | YES  |     | 0                 | 是否删除：1删除、0不删除
+ enabled          | INT(10)       | YES  |     | 0                 | 是否删除：1删除、0不删除
+ createtime       | TIMESTAMP(19) | YES  |     | CURRENT_TIMESTAMP | 创建时间    
+ updatetime       | TIMESTAMP(19) | YES  |     | CURRENT_TIMESTAMP | 更新时间    
+ last_modify_time | TIMESTAMP(19) | YES  |     | CURRENT_TIMESTAMP | 最后更新时间  
+------------------+---------------+------+-----+-------------------+---------
+
+Table: device_field_value
+------------------+---------------+------+-----+-------------------+---------
+ Field            | Type          | Null | Key | Default           | Remarks 
+------------------+---------------+------+-----+-------------------+---------
+ id               | VARCHAR(50)   | NO   | PRI |                   | ID      
+ did              | VARCHAR(50)   | YES  |     |                   | device ID
+ dtid             | VARCHAR(50)   | YES  |     |                   | device_type表ID
+ name             | VARCHAR(200)  | YES  |     |                   | 名称      
+ unit             | VARCHAR(200)  | YES  |     |                   | 单位      
+ type             | VARCHAR(50)   | YES  |     |                   | 运行参数、物理参数
+ input_type       | VARCHAR(50)   | YES  |     | text              | 输入类型：date,number,text
+ value            | VARCHAR(200)  | YES  |     |                   | 值       
+ default_value    | VARCHAR(50)   | YES  |     |                   | project.name 表和字段名
+ remark           | TEXT(65535)   | YES  |     |                   | 备注      
+ sort             | INT(10)       | YES  |     | 0                 | 排序      
+ dlt              | INT(10)       | YES  |     | 0                 | 是否删除：1删除、0不删除
+ enabled          | INT(10)       | YES  |     | 0                 | 是否删除：1删除、0不删除
+ createtime       | TIMESTAMP(19) | YES  |     | CURRENT_TIMESTAMP | 创建时间    
+ updatetime       | TIMESTAMP(19) | YES  |     | CURRENT_TIMESTAMP | 更新时间    
+ last_modify_time | TIMESTAMP(19) | YES  |     | CURRENT_TIMESTAMP | 最后更新时间  
+------------------+---------------+------+-----+-------------------+---------
+
+Table: device_img
+------------------+---------------+------+-----+-------------------+---------
+ Field            | Type          | Null | Key | Default           | Remarks 
+------------------+---------------+------+-----+-------------------+---------
+ id               | VARCHAR(50)   | NO   | PRI |                   | ID      
+ did              | VARCHAR(50)   | YES  |     |                   | device ID
+ type             | VARCHAR(50)   | YES  |     |                   | device_pic:设备照片，nameplate_pic:铭牌照片，attachment_pic:附件照片，acceptance_report:验收报告
+ url              | VARCHAR(50)   | YES  |     |                   | 图片地址    
+ remark           | TEXT(65535)   | YES  |     |                   | 备注      
+ sort             | INT(10)       | YES  |     | 0                 | 排序      
+ dlt              | INT(10)       | YES  |     | 0                 | 是否删除：1删除、0不删除
+ enabled          | INT(10)       | YES  |     | 0                 | 是否删除：1删除、0不删除
+ createtime       | TIMESTAMP(19) | YES  |     | CURRENT_TIMESTAMP | 创建时间    
+ updatetime       | TIMESTAMP(19) | YES  |     | CURRENT_TIMESTAMP | 更新时间    
+ last_modify_time | TIMESTAMP(19) | YES  |     | CURRENT_TIMESTAMP | 最后更新时间  
+------------------+---------------+------+-----+-------------------+---------
+
+Table: device_type
+------------------+---------------+------+-----+-------------------+---------
+ Field            | Type          | Null | Key | Default           | Remarks 
+------------------+---------------+------+-----+-------------------+---------
+ id               | VARCHAR(50)   | NO   | PRI |                   | ID      
+ name             | VARCHAR(100)  | YES  |     |                   | 名称      
+ pid              | VARCHAR(100)  | YES  |     |                   | 二次设备子类的父ID，第一级pid无意义且应为空
+ pinyin           | VARCHAR(100)  | YES  |     |                   | 名称的简拼   
+ type             | VARCHAR(100)  | YES  |     |                   | 一次设备（one）、二次设备（second）
+ remark           | TEXT(65535)   | YES  |     |                   | 备注      
+ sort             | INT(10)       | YES  |     | 0                 | 排序      
+ dlt              | INT(10)       | YES  |     | 0                 | 是否删除：1删除、0不删除
+ enabled          | INT(10)       | YES  |     | 0                 | 是否删除：1删除、0不删除
+ createtime       | TIMESTAMP(19) | YES  |     | CURRENT_TIMESTAMP | 创建时间    
+ updatetime       | TIMESTAMP(19) | YES  |     | CURRENT_TIMESTAMP | 更新时间    
+ last_modify_time | TIMESTAMP(19) | YES  |     | CURRENT_TIMESTAMP | 最后更新时间  
+------------------+---------------+------+-----+-------------------+---------
+
+Table: doc_field
+------------------+---------------+------+-----+-------------------+---------
+ Field            | Type          | Null | Key | Default           | Remarks 
+------------------+---------------+------+-----+-------------------+---------
+ id               | VARCHAR(50)   | NO   | PRI |                   | ID      
+ docid            | VARCHAR(50)   | YES  |     |                   | doc表ID  
+ pid              | VARCHAR(50)   | YES  |     |                   | 指向本表的ID，代表该条目是子条目。注意：非项目ID
+ isgroup          | BIT           | YES  |     | 0                 | 0表示该条记录是group
+ name             | VARCHAR(200)  | YES  |     |                   | 名称      
+ unit             | VARCHAR(200)  | YES  |     |                   | 单位      
+ key_             | VARCHAR(200)  | YES  |     |                   | 标示类型    
+ type             | VARCHAR(50)   | YES  |     | text              | 输入类型：date,number,text,sign,longtext
+ default_value    | VARCHAR(50)   | YES  |     |                   | project.name 表和字段名
+ remark           | TEXT(65535)   | YES  |     |                   | 备注      
+ sort             | INT(10)       | YES  |     | 0                 | 排序      
+ dlt              | INT(10)       | YES  |     | 0                 | 是否删除：1删除、0不删除
+ enabled          | INT(10)       | YES  |     | 0                 | 是否删除：1删除、0不删除
+ createtime       | TIMESTAMP(19) | YES  |     | CURRENT_TIMESTAMP | 创建时间    
+ updatetime       | TIMESTAMP(19) | YES  |     | CURRENT_TIMESTAMP | 更新时间    
+ last_modify_time | TIMESTAMP(19) | YES  |     | CURRENT_TIMESTAMP | 最后更新时间  
+------------------+---------------+------+-----+-------------------+---------
+
+Table: doc_field_value
+------------------+---------------+------+-----+-------------------+---------
+ Field            | Type          | Null | Key | Default           | Remarks 
+------------------+---------------+------+-----+-------------------+---------
+ id               | VARCHAR(50)   | NO   | PRI |                   | ID      
+ docid            | VARCHAR(50)   | YES  |     |                   | doc表ID  
+ dfid             | VARCHAR(50)   | YES  |     |                   | doc_field.id
+ pid              | VARCHAR(50)   | YES  |     |                   | projectId
+ groupid          | VARCHAR(50)   | YES  |     |                   | 随机生成，同一组输入保持一致。
+ name             | VARCHAR(200)  | YES  |     |                   | 名称      
+ unit             | VARCHAR(200)  | YES  |     |                   | 单位      
+ key_             | VARCHAR(200)  | YES  |     |                   | 标示类型    
+ type             | VARCHAR(50)   | YES  |     | text              | 输入类型：date,number,text,sign,longtext
+ value            | TEXT(65535)   | YES  |     |                   | 输入的值    
+ remark           | TEXT(65535)   | YES  |     |                   | 备注      
+ sort             | INT(10)       | YES  |     | 0                 | 排序      
+ dlt              | INT(10)       | YES  |     | 0                 | 是否删除：1删除、0不删除
+ enabled          | INT(10)       | YES  |     | 0                 | 是否删除：1删除、0不删除
+ createtime       | TIMESTAMP(19) | YES  |     | CURRENT_TIMESTAMP | 创建时间    
+ updatetime       | TIMESTAMP(19) | YES  |     | CURRENT_TIMESTAMP | 更新时间    
+ last_modify_time | TIMESTAMP(19) | YES  |     | CURRENT_TIMESTAMP | 最后更新时间  
+------------------+---------------+------+-----+-------------------+---------
+
+Table: doc_file
+------------------+------------------+------+-----+-------------------+---------
+ Field            | Type             | Null | Key | Default           | Remarks 
+------------------+------------------+------+-----+-------------------+---------
+ id               | VARCHAR(50)      | NO   | PRI |                   | ID      
+ pid              | VARCHAR(50)      | YES  |     |                   | 父ID     
+ name             | VARCHAR(200)     | YES  |     |                   | 名称      
+ key_             | VARCHAR(200)     | YES  |     |                   | 标示类型    
+ type             | VARCHAR(50)      | YES  |     |                   | doc表示文档,table表示表格样式
+ tpl_path         | VARCHAR(200)     | YES  |     |                   | 存储的路径   
+ thumb_path       | VARCHAR(200)     | YES  |     |                   | 缩略图路径   
+ have_sign        | INT UNSIGNED(10) | YES  |     | 0                 | 0表示没有签字，非零表示有签字
+ remark           | TEXT(65535)      | YES  |     |                   | 备注      
+ sort             | INT(10)          | YES  |     | 0                 | 排序      
+ dlt              | INT(10)          | YES  |     | 0                 | 是否删除：1删除、0不删除
+ enabled          | INT(10)          | YES  |     | 0                 | 是否删除：1删除、0不删除
+ createtime       | TIMESTAMP(19)    | YES  |     | CURRENT_TIMESTAMP | 创建时间    
+ updatetime       | TIMESTAMP(19)    | YES  |     | CURRENT_TIMESTAMP | 更新时间    
+ last_modify_time | TIMESTAMP(19)    | YES  |     | CURRENT_TIMESTAMP | 最后更新时间  
+------------------+------------------+------+-----+-------------------+---------
+
+Table: doc_group_value
+------------------+---------------+------+-----+-------------------+---------
+ Field            | Type          | Null | Key | Default           | Remarks 
+------------------+---------------+------+-----+-------------------+---------
+ id               | VARCHAR(50)   | NO   | PRI |                   | ID      
+ docid            | VARCHAR(50)   | YES  |     |                   | doc表ID  
+ dfid             | VARCHAR(50)   | YES  |     |                   | doc_field.id
+ pid              | VARCHAR(50)   | YES  |     |                   | projectId
+ key_             | VARCHAR(200)  | YES  |     |                   | 标示类型    
+ value            | TEXT(65535)   | YES  |     |                   | group的值 
+ remark           | TEXT(65535)   | YES  |     |                   | 备注      
+ sort             | INT(10)       | YES  |     | 0                 | 排序      
+ dlt              | INT(10)       | YES  |     | 0                 | 是否删除：1删除、0不删除
+ enabled          | INT(10)       | YES  |     | 0                 | 是否删除：1删除、0不删除
+ createtime       | TIMESTAMP(19) | YES  |     | CURRENT_TIMESTAMP | 创建时间    
+ updatetime       | TIMESTAMP(19) | YES  |     | CURRENT_TIMESTAMP | 更新时间    
+ last_modify_time | TIMESTAMP(19) | YES  |     | CURRENT_TIMESTAMP | 最后更新时间  
+------------------+---------------+------+-----+-------------------+---------
+
+Table: pms_bdz
+------------------+---------------+------+-----+-------------------+---------
+ Field            | Type          | Null | Key | Default           | Remarks 
+------------------+---------------+------+-----+-------------------+---------
+ id               | VARCHAR(100)  | NO   | PRI |                   | 默认同pms_obj_id
+ pms_DZLX         | VARCHAR(100)  | YES  |     |                   |         
+ pms_WHDJ         | VARCHAR(100)  | YES  |     |                   |         
+ pms_YXZT         | VARCHAR(100)  | YES  |     |                   |         
+ pms_WHBZ         | VARCHAR(100)  | YES  |     |                   |         
+ pms_BDZMC        | VARCHAR(100)  | YES  |     |                   | 变电站名称   
+ pms_BZFS         | VARCHAR(100)  | YES  |     |                   |         
+ pms_SFSNZ        | VARCHAR(100)  | YES  |     |                   |         
+ pms_TYRQ         | VARCHAR(100)  | YES  |     |                   |         
+ pms_obj_id       | VARCHAR(100)  | YES  |     |                   | pms id  
+ pms_DYDJ         | VARCHAR(100)  | YES  |     |                   | 电压等级，存的key。值参照pms_dict表
+ remark           | TEXT(65535)   | YES  |     |                   | 备注      
+ dlt              | INT(10)       | YES  |     | 0                 | 是否删除：1删除、0不删除
+ enabled          | INT(10)       | YES  |     | 0                 | 是否删除：1删除、0不删除
+ createtime       | TIMESTAMP(19) | YES  |     | CURRENT_TIMESTAMP | 创建时间    
+ updatetime       | TIMESTAMP(19) | YES  |     | CURRENT_TIMESTAMP | 更新时间    
+ last_modify_time | TIMESTAMP(19) | YES  |     | CURRENT_TIMESTAMP | 最后更新时间  
+------------------+---------------+------+-----+-------------------+---------
+
+Table: pms_device
+------------------+---------------+------+-----+-------------------+---------
+ Field            | Type          | Null | Key | Default           | Remarks 
+------------------+---------------+------+-----+-------------------+---------
+ id               | VARCHAR(100)  | NO   | PRI |                   | 默认同pms_obj_id
+ bid              | VARCHAR(100)  | NO   |     |                   | 变电站ID   
+ sid              | VARCHAR(100)  | NO   |     |                   | 间隔ID    
+ dtid             | VARCHAR(100)  | NO   |     |                   | 设备类型ID  
+ one              | VARCHAR(50)   | NO   |     | no                | 是否是一次：yes，no
+ second           | VARCHAR(50)   | NO   |     | no                | 是否是二次：yes，no
+ pms_XS           | VARCHAR(100)  | YES  |     |                   |         
+ pms_YXBH         | VARCHAR(100)  | YES  |     |                   |         
+ pms_DXMPYXKID    | VARCHAR(100)  | YES  |     |                   |         
+ pms_SBMC         | VARCHAR(100)  | YES  |     |                   | 设备名称    
+ pms_YXZT         | VARCHAR(100)  | YES  |     |                   |         
+ pms_yzz          | VARCHAR(100)  | YES  |     |                   |         
+ pms_JGDY         | VARCHAR(100)  | YES  |     |                   |         
+ pms_SBLX         | VARCHAR(100)  | YES  |     |                   |         
+ pms_obj_id       | VARCHAR(100)  | YES  |     |                   |         
+ pms_DYDJ         | VARCHAR(100)  | YES  |     |                   |         
+ pms_YGLTX        | VARCHAR(100)  | YES  |     |                   |         
+ remark           | TEXT(65535)   | YES  |     |                   | 备注      
+ dlt              | INT(10)       | YES  |     | 0                 | 是否删除：1删除、0不删除
+ enabled          | INT(10)       | YES  |     | 0                 | 是否删除：1删除、0不删除
+ createtime       | TIMESTAMP(19) | YES  |     | CURRENT_TIMESTAMP | 创建时间    
+ updatetime       | TIMESTAMP(19) | YES  |     | CURRENT_TIMESTAMP | 更新时间    
+ last_modify_time | TIMESTAMP(19) | YES  |     | CURRENT_TIMESTAMP | 最后更新时间  
+------------------+---------------+------+-----+-------------------+---------
+
+Table: pms_dict
+------------------+---------------+------+-----+-------------------+---------
+ Field            | Type          | Null | Key | Default           | Remarks 
+------------------+---------------+------+-----+-------------------+---------
+ id               | VARCHAR(50)   | NO   | PRI |                   | type+key
+ type             | VARCHAR(50)   | NO   |     |                   | 类型      
+ key              | VARCHAR(50)   | NO   |     |                   | key     
+ text             | VARCHAR(50)   | NO   |     |                   | 显示的文本   
+ remark           | TEXT(65535)   | YES  |     |                   | 备注      
+ dlt              | INT(10)       | YES  |     | 0                 | 是否删除：1删除、0不删除
+ enabled          | INT(10)       | YES  |     | 0                 | 是否删除：1删除、0不删除
+ createtime       | TIMESTAMP(19) | YES  |     | CURRENT_TIMESTAMP | 创建时间    
+ updatetime       | TIMESTAMP(19) | YES  |     | CURRENT_TIMESTAMP | 更新时间    
+ last_modify_time | TIMESTAMP(19) | YES  |     | CURRENT_TIMESTAMP | 最后更新时间  
+------------------+---------------+------+-----+-------------------+---------
+
+Table: pms_spacing
+------------------+---------------+------+-----+-------------------+---------
+ Field            | Type          | Null | Key | Default           | Remarks 
+------------------+---------------+------+-----+-------------------+---------
+ id               | VARCHAR(100)  | NO   | PRI |                   | 默认同pms_obj_id
+ bid              | VARCHAR(100)  | NO   |     |                   | 变电站ID   
+ one              | VARCHAR(50)   | NO   |     | no                | 是否是一次：yes，no
+ second           | VARCHAR(50)   | NO   |     | no                | 是否是二次：yes，no
+ pms_SSZF         | VARCHAR(100)  | YES  |     |                   |         
+ pms_DDDW         | VARCHAR(100)  | YES  |     |                   |         
+ pms_JGDYMC       | VARCHAR(100)  | YES  |     |                   | 间隔单元名称  
+ pms_JXFS         | VARCHAR(100)  | YES  |     |                   |         
+ pms_JGDYLX       | VARCHAR(100)  | YES  |     |                   |         
+ pms_obj_id       | VARCHAR(100)  | YES  |     |                   |         
+ pms_DYDJ         | VARCHAR(100)  | YES  |     |                   |         
+ pms_JGDYBH       | VARCHAR(100)  | YES  |     |                   |         
+ remark           | TEXT(65535)   | YES  |     |                   | 备注      
+ dlt              | INT(10)       | YES  |     | 0                 | 是否删除：1删除、0不删除
+ enabled          | INT(10)       | YES  |     | 0                 | 是否删除：1删除、0不删除
+ createtime       | TIMESTAMP(19) | YES  |     | CURRENT_TIMESTAMP | 创建时间    
+ updatetime       | TIMESTAMP(19) | YES  |     | CURRENT_TIMESTAMP | 更新时间    
+ last_modify_time | TIMESTAMP(19) | YES  |     | CURRENT_TIMESTAMP | 最后更新时间  
+------------------+---------------+------+-----+-------------------+---------
+
+Table: pro_milestone
+------------------+---------------+------+-----+-------------------+---------
+ Field            | Type          | Null | Key | Default           | Remarks 
+------------------+---------------+------+-----+-------------------+---------
+ id               | VARCHAR(50)   | NO   | PRI |                   | ID      
+ pid              | VARCHAR(50)   | YES  |     |                   | 工程项目ID  
+ name             | VARCHAR(100)  | YES  |     |                   | 名称      
+ plantime         | TIMESTAMP(19) | YES  |     | CURRENT_TIMESTAMP | 计划时间    
+ finishTime       | TIMESTAMP(19) | YES  |     | CURRENT_TIMESTAMP | 完成时间    
+ checktype        | VARCHAR(50)   | YES  |     |                   | 验收类型    
+ devicetype       | VARCHAR(50)   | YES  |     |                   | 设备类型    
+ remark           | TEXT(65535)   | YES  |     |                   | 备注      
+ enabled          | INT(10)       | YES  |     | 0                 | 是否删除：1删除、0不删除
+ createtime       | TIMESTAMP(19) | YES  |     | CURRENT_TIMESTAMP | 创建时间    
+ updatetime       | TIMESTAMP(19) | YES  |     | CURRENT_TIMESTAMP | 更新时间    
+ last_modify_time | TIMESTAMP(19) | YES  |     | CURRENT_TIMESTAMP | 最后更新时间  
+------------------+---------------+------+-----+-------------------+---------
+
+Table: pro_progress
+------------------+---------------+------+-----+-------------------+---------
+ Field            | Type          | Null | Key | Default           | Remarks 
+------------------+---------------+------+-----+-------------------+---------
+ id               | VARCHAR(50)   | NO   | PRI |                   | ID      
+ pid              | VARCHAR(50)   | YES  |     |                   | 工程项目ID  
+ start_date       | TIMESTAMP(19) | NO   |     | CURRENT_TIMESTAMP | 开始日期    
+ duration         | INT(10)       | NO   |     | 1                 | 持续时间    
+ text             | TEXT(65535)   | YES  |     |                   | 任务名字    
+ remark           | TEXT(65535)   | YES  |     |                   | 备注      
+ dlt              | INT(10)       | YES  |     | 0                 | 是否删除：1删除、0不删除
+ enabled          | INT(10)       | YES  |     | 0                 | 是否删除：1删除、0不删除
+ createtime       | TIMESTAMP(19) | YES  |     | CURRENT_TIMESTAMP | 创建时间    
+ updatetime       | TIMESTAMP(19) | YES  |     | CURRENT_TIMESTAMP | 更新时间    
+ last_modify_time | TIMESTAMP(19) | YES  |     | CURRENT_TIMESTAMP | 最后更新时间  
+------------------+---------------+------+-----+-------------------+---------
+
+Table: pro_project
+------------------+---------------+------+-----+-------------------+---------
+ Field            | Type          | Null | Key | Default           | Remarks 
+------------------+---------------+------+-----+-------------------+---------
+ id               | VARCHAR(50)   | NO   | PRI |                   | ID      
+ name             | VARCHAR(100)  | YES  |     |                   | 名称      
+ bdz              | VARCHAR(100)  | YES  |     |                   | 变电站     
+ bdzid            | VARCHAR(100)  | YES  |     |                   | pms_bdz.id
+ type             | VARCHAR(50)   | YES  |     |                   | 类型、基建工程、技改工程
+ fr               | VARCHAR(100)  | YES  |     |                   | 项目法人    
+ gldw             | VARCHAR(50)   | YES  |     |                   | 建设管理单位  
+ sjdw             | VARCHAR(50)   | YES  |     |                   | 设计单位    
+ jldw             | VARCHAR(50)   | YES  |     |                   | 监理单位    
+ sgdw             | VARCHAR(50)   | YES  |     |                   | 施工单位    
+ yxdw             | VARCHAR(50)   | YES  |     |                   | 运行单位    
+ ysjh             | VARCHAR(200)  | YES  |     |                   | 验收计划    
+ ysfa             | VARCHAR(200)  | YES  |     |                   | 验收方案    
+ jlbg             | VARCHAR(200)  | YES  |     |                   | 监理报告    
+ remark           | TEXT(65535)   | YES  |     |                   | 备注      
+ dlt              | INT(10)       | YES  |     | 0                 | 是否删除：1删除、0不删除
+ enabled          | INT(10)       | YES  |     | 0                 | 是否删除：1删除、0不删除
+ createtime       | TIMESTAMP(19) | YES  |     | CURRENT_TIMESTAMP | 创建时间    
+ updatetime       | TIMESTAMP(19) | YES  |     | CURRENT_TIMESTAMP | 更新时间    
+ last_modify_time | TIMESTAMP(19) | YES  |     | CURRENT_TIMESTAMP | 最后更新时间  
+------------------+---------------+------+-----+-------------------+---------
+
+Table: pro_project_attachment
+------------------+---------------+------+-----+-------------------+---------
+ Field            | Type          | Null | Key | Default           | Remarks 
+------------------+---------------+------+-----+-------------------+---------
+ id               | VARCHAR(50)   | NO   | PRI |                   | ID      
+ pid              | VARCHAR(50)   | YES  |     |                   | 工程项目ID  
+ flow             | VARCHAR(50)   | YES  |     |                   | 流程      
+ name             | VARCHAR(200)  | YES  |     |                   | 名称      
+ type             | VARCHAR(50)   | YES  |     |                   | 类型，直接存汉字：资料、合同、其他
+ url              | VARCHAR(200)  | YES  |     |                   | 存储的路径   
+ remark           | TEXT(65535)   | YES  |     |                   | 备注      
+ sort             | INT(10)       | YES  |     | 0                 | 排序      
+ dlt              | INT(10)       | YES  |     | 0                 | 是否删除：1删除、0不删除
+ enabled          | INT(10)       | YES  |     | 0                 | 是否删除：1删除、0不删除
+ createtime       | TIMESTAMP(19) | YES  |     | CURRENT_TIMESTAMP | 创建时间    
+ updatetime       | TIMESTAMP(19) | YES  |     | CURRENT_TIMESTAMP | 更新时间    
+ last_modify_time | TIMESTAMP(19) | YES  |     | CURRENT_TIMESTAMP | 最后更新时间  
+------------------+---------------+------+-----+-------------------+---------
+
+Table: pro_project_attachment_image
+------------------+---------------+------+-----+-------------------+---------
+ Field            | Type          | Null | Key | Default           | Remarks 
+------------------+---------------+------+-----+-------------------+---------
+ id               | VARCHAR(50)   | NO   | PRI |                   | ID      
+ pid              | VARCHAR(50)   | YES  |     |                   | 工程项目ID  
+ name             | VARCHAR(200)  | YES  |     |                   | 名称      
+ paid             | VARCHAR(50)   | YES  |     |                   | pro_project_attachment.id
+ img_path         | VARCHAR(200)  | YES  |     |                   | 存储的路径   
+ remark           | TEXT(65535)   | YES  |     |                   | 备注      
+ sort             | INT(10)       | YES  |     | 0                 | 排序      
+ dlt              | INT(10)       | YES  |     | 0                 | 是否删除：1删除、0不删除
+ enabled          | INT(10)       | YES  |     | 0                 | 是否删除：1删除、0不删除
+ createtime       | TIMESTAMP(19) | YES  |     | CURRENT_TIMESTAMP | 创建时间    
+ updatetime       | TIMESTAMP(19) | YES  |     | CURRENT_TIMESTAMP | 更新时间    
+ last_modify_time | TIMESTAMP(19) | YES  |     | CURRENT_TIMESTAMP | 最后更新时间  
+------------------+---------------+------+-----+-------------------+---------
+
+Table: pro_project_scal
+------------------+---------------+------+-----+-------------------+---------
+ Field            | Type          | Null | Key | Default           | Remarks 
+------------------+---------------+------+-----+-------------------+---------
+ id               | VARCHAR(50)   | NO   | PRI |                   | ID      
+ pid              | VARCHAR(50)   | YES  |     |                   | 工程项目ID  
+ key              | VARCHAR(50)   | YES  |     |                   | 固定项在config表中的key，非固定项为空
+ name             | VARCHAR(50)   | YES  |     |                   | 名称      
+ finalscal        | VARCHAR(50)   | YES  |     |                   | 最终规模    
+ initscal         | VARCHAR(50)   | YES  |     |                   | 初始规模    
+ remark           | TEXT(65535)   | YES  |     |                   | 备注      
+ sort             | INT(10)       | YES  |     | 0                 | 排序      
+ dlt              | INT(10)       | YES  |     | 0                 | 是否删除：1删除、0不删除
+ enabled          | INT(10)       | YES  |     | 0                 | 是否删除：1删除、0不删除
+ createtime       | TIMESTAMP(19) | YES  |     | CURRENT_TIMESTAMP | 创建时间    
+ updatetime       | TIMESTAMP(19) | YES  |     | CURRENT_TIMESTAMP | 更新时间    
+ last_modify_time | TIMESTAMP(19) | YES  |     | CURRENT_TIMESTAMP | 最后更新时间  
+------------------+---------------+------+-----+-------------------+---------
+
+Table: rel_device_issue
+------------------+---------------+------+-----+-------------------+---------
+ Field            | Type          | Null | Key | Default           | Remarks 
+------------------+---------------+------+-----+-------------------+---------
+ id               | VARCHAR(50)   | NO   | PRI |                   | ID      
+ did              | VARCHAR(100)  | YES  |     |                   | 设备ID    
+ iid              | VARCHAR(100)  | YES  |     |                   | 问题ID    
+ remark           | TEXT(65535)   | YES  |     |                   | 备注      
+ dlt              | INT(10)       | YES  |     | 0                 | 是否删除：1删除、0不删除
+ enabled          | INT(10)       | YES  |     | 0                 | 是否删除：1删除、0不删除
+ createtime       | TIMESTAMP(19) | YES  |     | CURRENT_TIMESTAMP | 创建时间    
+ updatetime       | TIMESTAMP(19) | YES  |     | CURRENT_TIMESTAMP | 更新时间    
+ last_modify_time | TIMESTAMP(19) | YES  |     | CURRENT_TIMESTAMP | 最后更新时间  
+------------------+---------------+------+-----+-------------------+---------
+
+Table: rel_device_task
+------------------+---------------+------+-----+-------------------+---------
+ Field            | Type          | Null | Key | Default           | Remarks 
+------------------+---------------+------+-----+-------------------+---------
+ id               | VARCHAR(50)   | NO   | PRI |                   | ID      
+ did              | VARCHAR(100)  | YES  |     |                   | 设备ID    
+ tid              | VARCHAR(100)  | YES  |     |                   | 任务ID    
+ remark           | TEXT(65535)   | YES  |     |                   | 备注      
+ dlt              | INT(10)       | YES  |     | 0                 | 是否删除：1删除、0不删除
+ enabled          | INT(10)       | YES  |     | 0                 | 是否删除：1删除、0不删除
+ createtime       | TIMESTAMP(19) | YES  |     | CURRENT_TIMESTAMP | 创建时间    
+ updatetime       | TIMESTAMP(19) | YES  |     | CURRENT_TIMESTAMP | 更新时间    
+ last_modify_time | TIMESTAMP(19) | YES  |     | CURRENT_TIMESTAMP | 最后更新时间  
+------------------+---------------+------+-----+-------------------+---------
+
+Table: result_issue
+------------------+---------------+------+-----+-------------------+---------
+ Field            | Type          | Null | Key | Default           | Remarks 
+------------------+---------------+------+-----+-------------------+---------
+ id               | VARCHAR(50)   | NO   | PRI |                   | ID      
+ pid              | VARCHAR(50)   | YES  |     |                   | project.id
+ flow             | VARCHAR(50)   | YES  |     |                   | 流程      
+ dtid             | VARCHAR(50)   | YES  |     |                   | deviceType.id
+ ctid             | VARCHAR(50)   | YES  |     |                   | cardType.id
+ sbxh             | VARCHAR(100)  | YES  |     |                   | taskcard.sbxh
+ description      | VARCHAR(1000) | YES  |     |                   | 问题描述    
+ space            | VARCHAR(100)  | YES  |     |                   | 间隔      
+ devicename       | VARCHAR(100)  | YES  |     |                   | 设备名称    
+ suggest          | VARCHAR(100)  | YES  |     |                   | 整改建议    
+ imgs             | VARCHAR(200)  | YES  |     |                   | 图片名称，多个用逗号分隔
+ creator          | VARCHAR(200)  | YES  |     |                   | 新建人员    
+ fixer            | VARCHAR(200)  | YES  |     |                   | 整改人     
+ fixtime          | DATETIME(19)  | YES  |     |                   | 整改时间    
+ fixremark        | TEXT(65535)   | YES  |     |                   | 整改说明    
+ fiximgs          | VARCHAR(500)  | YES  |     |                   | 整改照片，多个用逗号分割
+ cheker           | VARCHAR(500)  | YES  |     |                   | 复核人     
+ checktime        | DATETIME(19)  | YES  |     |                   | 复核时间    
+ checkmustclear   | VARCHAR(50)   | YES  |     |                   | 限定最迟多久整改
+ checkimgs        | VARCHAR(500)  | YES  |     |                   | 复核失败拍照  
+ checkremark      | VARCHAR(500)  | YES  |     |                   | 复核失败建议  
+ checkresult      | VARCHAR(500)  | YES  |     |                   | 复核结果：Y通过，N未通过，NULL未复核
+ csid             | VARCHAR(50)   | YES  |     |                   | 验收标准id  
+ csname           | VARCHAR(100)  | YES  |     |                   | 验收标准名称  
+ status           | VARCHAR(100)  | YES  |     | normal            | 任务状态：normal、cleared：已整改的问题
+ cleartime        | TIMESTAMP(19) | YES  |     |                   | 清除时间, Pad@Deprecated
+ clearremark      | TEXT(65535)   | YES  |     |                   | 清除说明, Pad@Deprecated
+ tid              | VARCHAR(50)   | YES  |     |                   | 任务ID    
+ isremain         | INT(10)       | YES  |     | 0                 | 是否是遗留问题：1是，0不是
+ isimport         | VARCHAR(50)   | YES  |     | N                 | 是否被标为重大问题，当该问题被标为重大问题是为Y，其余状态皆可认定为N
+ remainer         | VARCHAR(50)   | YES  |     |                   | 标记为遗留问题的人员
+ remaintime       | TIMESTAMP(19) | YES  |     |                   | 标记为遗留问题的时间
+ responsibility   | VARCHAR(100)  | YES  |     |                   | 责任单位    
+ limittime        | TIMESTAMP(19) | YES  |     |                   | 限期完成时间  
+ tcid             | VARCHAR(50)   | YES  |     |                   | 标准卡ID   
+ ciid             | VARCHAR(50)   | YES  |     |                   | 验收小项ID  
+ ciname           | VARCHAR(100)  | YES  |     |                   | 验收小项名称  
+ remark           | TEXT(65535)   | YES  |     |                   | 备注      
+ dlt              | INT(10)       | YES  |     | 0                 | 是否删除：1删除、0不删除
+ enabled          | INT(10)       | YES  |     | 0                 | 是否删除：1删除、0不删除
+ createtime       | TIMESTAMP(19) | YES  |     | CURRENT_TIMESTAMP | 创建时间    
+ updatetime       | TIMESTAMP(19) | YES  |     | CURRENT_TIMESTAMP | 更新时间    
+ last_modify_time | TIMESTAMP(19) | YES  |     | CURRENT_TIMESTAMP | 最后更新时间  
+------------------+---------------+------+-----+-------------------+---------
+
+Table: result_issue_important
+------------------+---------------+------+-----+-------------------+---------
+ Field            | Type          | Null | Key | Default           | Remarks 
+------------------+---------------+------+-----+-------------------+---------
+ id               | VARCHAR(50)   | NO   | PRI |                   | ID      
+ no               | VARCHAR(100)  | YES  |     |                   | 编号      
+ senddepart       | VARCHAR(100)  | YES  |     |                   | 发出单位    
+ sendcontact      | VARCHAR(100)  | YES  |     |                   | 发出单位联系人 
+ checkdepart      | VARCHAR(100)  | YES  |     |                   | 验收单位    
+ checkcontact     | VARCHAR(100)  | YES  |     |                   | 验收人     
+ receivedepart    | VARCHAR(100)  | YES  |     |                   | 接受单位    
+ receivecontact   | VARCHAR(100)  | YES  |     |                   | 接收单位联系人 
+ project          | VARCHAR(100)  | YES  |     |                   | 项目名称    
+ devicetype       | VARCHAR(100)  | YES  |     |                   | 设备类别    
+ installplace     | VARCHAR(100)  | YES  |     |                   | 安装位置/运行编号（生产工号）
+ factory          | VARCHAR(100)  | YES  |     |                   | 厂家及型号   
+ name             | VARCHAR(100)  | YES  |     |                   | 问题名称    
+ description      | VARCHAR(100)  | YES  |     |                   | 问题描述    
+ suggest          | VARCHAR(100)  | YES  |     |                   | 整改建议    
+ imgs             | VARCHAR(200)  | YES  |     |                   | 图片名称，多个用逗号分隔
+ riid             | TEXT(65535)   | YES  |     |                   | 问题记录ID  
+ csid             | VARCHAR(50)   | YES  |     |                   | 验收标准id  
+ csname           | VARCHAR(100)  | YES  |     |                   | 验收标准名称  
+ tid              | VARCHAR(50)   | YES  |     |                   | 任务ID    
+ tcid             | VARCHAR(50)   | YES  |     |                   | 标准卡ID   
+ ciid             | VARCHAR(50)   | YES  |     |                   | 验收小项ID  
+ ciname           | VARCHAR(100)  | YES  |     |                   | 验收小项名称  
+ remark           | TEXT(65535)   | YES  |     |                   | 备注      
+ dlt              | INT(10)       | YES  |     | 0                 | 是否删除：1删除、0不删除
+ enabled          | INT(10)       | YES  |     | 0                 | 是否删除：1删除、0不删除
+ createtime       | TIMESTAMP(19) | YES  |     | CURRENT_TIMESTAMP | 创建时间    
+ updatetime       | TIMESTAMP(19) | YES  |     | CURRENT_TIMESTAMP | 更新时间    
+ last_modify_time | TIMESTAMP(19) | YES  |     | CURRENT_TIMESTAMP | 最后更新时间  
+------------------+---------------+------+-----+-------------------+---------
+
+Table: result_issue_log
+------------------+---------------+------+-----+-------------------+---------
+ Field            | Type          | Null | Key | Default           | Remarks 
+------------------+---------------+------+-----+-------------------+---------
+ id               | VARCHAR(50)   | NO   | PRI |                   | ID      
+ riid             | VARCHAR(50)   | NO   |     |                   | result_issue.id
+ operator         | VARCHAR(50)   | NO   |     |                   | 操作人     
+ status           | VARCHAR(50)   | NO   |     |                   | 状态:create,fix,remain,check_y,check_n
+ op_time          | VARCHAR(50)   | NO   |     |                   | 操作时间    
+ op_img           | VARCHAR(500)  | YES  |     |                   | 操作图片    
+ op_content       | VARCHAR(500)  | YES  |     |                   | 操作内容    
+ op_extra         | VARCHAR(500)  | YES  |     |                   | 扩展字段.具体含义由内容使用
+ remark           | TEXT(65535)   | YES  |     |                   | 备注      
+ sort             | INT(10)       | YES  |     | 0                 | 排序      
+ dlt              | INT(10)       | YES  |     | 0                 | 是否删除：1删除、0不删除
+ enabled          | INT(10)       | YES  |     | 0                 | 是否删除：1删除、0不删除
+ createtime       | TIMESTAMP(19) | YES  |     | CURRENT_TIMESTAMP | 创建时间    
+ updatetime       | TIMESTAMP(19) | YES  |     | CURRENT_TIMESTAMP | 更新时间    
+ last_modify_time | TIMESTAMP(19) | YES  |     | CURRENT_TIMESTAMP | 最后更新时间  
+------------------+---------------+------+-----+-------------------+---------
+
+Table: result_item
+------------------+---------------+------+-----+-------------------+---------
+ Field            | Type          | Null | Key | Default           | Remarks 
+------------------+---------------+------+-----+-------------------+---------
+ id               | VARCHAR(50)   | NO   | PRI |                   | ID      
+ name             | VARCHAR(100)  | YES  |     |                   | 验收小项名称  
+ tid              | VARCHAR(50)   | YES  |     |                   | 任务ID    
+ tcid             | VARCHAR(50)   | YES  |     |                   | 任务标准卡ID 
+ ciid             | VARCHAR(50)   | YES  |     |                   | 验收项目id  
+ ciname           | VARCHAR(100)  | YES  |     |                   | 验收项目名称  
+ checktype        | VARCHAR(100)  | YES  |     |                   | 检查类型，冗余自card_item
+ result           | INT(10)       | YES  |     |                   | 验收结果，0合格，1不合格
+ images           | TEXT(65535)   | YES  |     |                   | 资料采集的照片，多个用，好分开
+ remark           | TEXT(65535)   | YES  |     |                   | 备注      
+ dlt              | INT(10)       | YES  |     | 0                 | 是否删除：1删除、0不删除
+ enabled          | INT(10)       | YES  |     | 0                 | 是否删除：1删除、0不删除
+ createtime       | TIMESTAMP(19) | YES  |     | CURRENT_TIMESTAMP | 创建时间    
+ updatetime       | TIMESTAMP(19) | YES  |     | CURRENT_TIMESTAMP | 更新时间    
+ last_modify_time | TIMESTAMP(19) | YES  |     | CURRENT_TIMESTAMP | 最后更新时间  
+------------------+---------------+------+-----+-------------------+---------
+
+Table: result_item_copy
+------------------+---------------+------+-----+-------------------+---------
+ Field            | Type          | Null | Key | Default           | Remarks 
+------------------+---------------+------+-----+-------------------+---------
+ id               | VARCHAR(50)   | NO   | PRI |                   | ID      
+ tid              | VARCHAR(50)   | YES  |     |                   | 关联的任务ID 
+ tcid             | VARCHAR(50)   | YES  |     |                   | 关联的任务标准卡ID
+ ccid             | VARCHAR(50)   | YES  |     |                   | 关联的抄录项ID
+ riid             | VARCHAR(50)   | YES  |     |                   | result item ID
+ name             | VARCHAR(100)  | YES  |     |                   | 抄录名称    
+ unit             | VARCHAR(50)   | YES  |     |                   | 关联的抄录项单位
+ value            | VARCHAR(50)   | YES  |     |                   | 抄录值     
+ sort             | INT(10)       | YES  |     | 0                 | 抄录结果排序  
+ remark           | TEXT(65535)   | YES  |     |                   | 备注      
+ dlt              | INT(10)       | YES  |     | 0                 | 是否删除：1删除、0不删除
+ enabled          | INT(10)       | YES  |     | 0                 | 是否删除：1删除、0不删除
+ createtime       | TIMESTAMP(19) | YES  |     | CURRENT_TIMESTAMP | 创建时间    
+ updatetime       | TIMESTAMP(19) | YES  |     | CURRENT_TIMESTAMP | 更新时间    
+ last_modify_time | TIMESTAMP(19) | YES  |     | CURRENT_TIMESTAMP | 最后更新时间  
+------------------+---------------+------+-----+-------------------+---------
+
+Table: result_signname
+------------------+---------------+------+-----+-------------------+---------
+ Field            | Type          | Null | Key | Default           | Remarks 
+------------------+---------------+------+-----+-------------------+---------
+ id               | VARCHAR(50)   | NO   | PRI |                   | ID      
+ tcid             | VARCHAR(50)   | YES  |     |                   | 任务标准卡ID 
+ tid              | VARCHAR(50)   | YES  |     |                   | 任务ID    
+ citid            | VARCHAR(50)   | YES  |     |                   | 验收类型ID  
+ riid             | VARCHAR(50)   | YES  |     |                   | 问题签名ID  如果该签名属于问题签名则不为空
+ signname         | VARCHAR(100)  | YES  |     |                   | 签名人     
+ signimg          | VARCHAR(100)  | YES  |     |                   | 签名图片地址  
+ company          | VARCHAR(200)  | YES  |     |                   | 单位      
+ department       | VARCHAR(200)  | YES  |     |                   | 部门      
+ remark           | TEXT(65535)   | YES  |     |                   | 备注      
+ dlt              | INT(10)       | YES  |     | 0                 | 是否删除：1删除、0不删除
+ enabled          | INT(10)       | YES  |     | 0                 | 是否删除：1删除、0不删除
+ createtime       | TIMESTAMP(19) | YES  |     | CURRENT_TIMESTAMP | 创建时间    
+ updatetime       | TIMESTAMP(19) | YES  |     | CURRENT_TIMESTAMP | 更新时间    
+ last_modify_time | TIMESTAMP(19) | YES  |     | CURRENT_TIMESTAMP | 最后更新时间  
+------------------+---------------+------+-----+-------------------+---------
+
+Table: sys_config
+------------------+---------------+------+-----+-------------------+---------
+ Field            | Type          | Null | Key | Default           | Remarks 
+------------------+---------------+------+-----+-------------------+---------
+ id               | VARCHAR(50)   | NO   | PRI |                   | ID      
+ key              | VARCHAR(50)   | YES  |     |                   | 不会改变的内容，可以在代码中使用
+ name             | VARCHAR(200)  | YES  |     |                   | 显示的内容   
+ type             | VARCHAR(50)   | YES  |     |                   | 类型，可以直接在代码中固化此字段
+ remark           | TEXT(65535)   | YES  |     |                   | 备注      
+ sort             | INT(10)       | YES  |     | 0                 | 排序      
+ dlt              | INT(10)       | YES  |     | 0                 | 是否删除：1删除、0不删除
+ enabled          | INT(10)       | YES  |     | 0                 | 是否删除：1删除、0不删除
+ createtime       | TIMESTAMP(19) | YES  |     | CURRENT_TIMESTAMP | 创建时间    
+ updatetime       | TIMESTAMP(19) | YES  |     | CURRENT_TIMESTAMP | 更新时间    
+ last_modify_time | TIMESTAMP(19) | YES  |     | CURRENT_TIMESTAMP | 最后更新时间  
+------------------+---------------+------+-----+-------------------+---------
+
+Table: task
+------------------+---------------+------+-----+-------------------+---------
+ Field            | Type          | Null | Key | Default           | Remarks 
+------------------+---------------+------+-----+-------------------+---------
+ id               | VARCHAR(50)   | NO   | PRI |                   | ID      
+ oids             | VARCHAR(500)  | YES  |     |                   | 被合并的任务ID，多个ID用逗号分割
+ name             | VARCHAR(100)  | YES  |     |                   | 名称      
+ pid              | VARCHAR(50)   | YES  |     |                   | 工程项目ID  
+ pname            | VARCHAR(50)   | YES  |     |                   | 工程项目名称  
+ flow             | VARCHAR(50)   | YES  |     |                   | 验收流程key 
+ flowname         | VARCHAR(50)   | YES  |     |                   | 验收流程的名称 
+ type             | VARCHAR(50)   | YES  |     |                   | 验收任务的类型（同卡的类型）的key，
+ space            | VARCHAR(50)   | YES  |     |                   | 间隔      
+ cards            | VARCHAR(5000) | YES  |     |                   | 关联的验收标准卡ID，多个用逗号分开
+ deviceno         | VARCHAR(50)   | YES  |     |                   | 设备型号    
+ devicetype       | VARCHAR(50)   | YES  |     |                   | 设备类型    
+ productor        | VARCHAR(200)  | YES  |     |                   | 生产厂家    
+ time             | VARCHAR(50)   | YES  |     |                   | 计划时间    
+ status           | VARCHAR(50)   | YES  |     | add               | 状态：add（新添加），其他状态待定
+ result           | VARCHAR(50)   | YES  |     |                   | 结论      
+ sort             | INT(10)       | YES  |     | 0                 | 排序      
+ remark           | TEXT(65535)   | YES  |     |                   | 备注      
+ dlt              | INT(10)       | YES  |     | 0                 | 是否删除：1删除、0不删除
+ enabled          | INT(10)       | YES  |     | 0                 | 是否删除：1删除、0不删除
+ createtime       | TIMESTAMP(19) | YES  |     | CURRENT_TIMESTAMP | 创建时间    
+ updatetime       | TIMESTAMP(19) | YES  |     | CURRENT_TIMESTAMP | 更新时间    
+ last_modify_time | TIMESTAMP(19) | YES  |     | CURRENT_TIMESTAMP | 最后更新时间  
+------------------+---------------+------+-----+-------------------+---------
+
+Table: task_card
+------------------+---------------+------+-----+-------------------+---------
+ Field            | Type          | Null | Key | Default           | Remarks 
+------------------+---------------+------+-----+-------------------+---------
+ id               | VARCHAR(50)   | NO   | PRI |                   | ID      
+ tid              | VARCHAR(50)   | YES  |     |                   | 任务ID    
+ cid              | VARCHAR(50)   | YES  |     |                   | 标准卡ID，来源Card表
+ status           | VARCHAR(50)   | YES  |     | add               | 状态：新增add、进行中doing、完成done
+ cname            | VARCHAR(100)  | YES  |     |                   | 验收卡名称   
+ flow             | VARCHAR(50)   | YES  |     |                   | 验收流程key，数据来源config表
+ type             | VARCHAR(50)   | YES  |     |                   | 验收类型的key
+ dtid             | VARCHAR(50)   | YES  |     |                   | 设备类型id，数据来源device_type
+ gcmc             | VARCHAR(100)  | YES  |     |                   | 工程名称    
+ sjdw             | VARCHAR(100)  | YES  |     |                   | 设计单位    
+ ysdw             | VARCHAR(100)  | YES  |     |                   | 验收单位    
+ ysrq             | VARCHAR(100)  | YES  |     |                   | 验收日期    
+ sccj             | VARCHAR(100)  | YES  |     |                   | 生产厂家    
+ sbxh             | VARCHAR(100)  | YES  |     |                   | 设备型号    
+ scgh             | VARCHAR(100)  | YES  |     |                   | 生产工号    
+ ccbh             | VARCHAR(100)  | YES  |     |                   | 出厂编号    
+ bdsmc            | VARCHAR(100)  | YES  |     |                   | 变电所名称   
+ sbmcbh           | VARCHAR(100)  | YES  |     |                   | 设备名称编号  
+ jldw             | VARCHAR(100)  | YES  |     |                   | 监理单位    
+ sgdw             | VARCHAR(100)  | YES  |     |                   | 施工单位    
+ azdw             | VARCHAR(100)  | YES  |     |                   | 安装单位    
+ citids           | VARCHAR(1000) | YES  |     |                   | 隐蔽工程选择验收大项的ids,逗号分隔
+ remark           | TEXT(65535)   | YES  |     |                   | 备注      
+ dlt              | INT(10)       | YES  |     | 0                 | 是否删除：1删除、0不删除
+ enabled          | INT(10)       | YES  |     | 0                 | 是否删除：1删除、0不删除
+ createtime       | TIMESTAMP(19) | YES  |     | CURRENT_TIMESTAMP | 创建时间    
+ updatetime       | TIMESTAMP(19) | YES  |     | CURRENT_TIMESTAMP | 更新时间    
+ last_modify_time | TIMESTAMP(19) | YES  |     | CURRENT_TIMESTAMP | 最后更新时间  
+------------------+---------------+------+-----+-------------------+---------
+

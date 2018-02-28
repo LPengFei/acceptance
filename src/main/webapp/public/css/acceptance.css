@@ -1,0 +1,167 @@
+@CHARSET "UTF-8";
+
+hr {
+    border: 1px dashed #DDDDDD !important;
+    margin-top: 25px;
+}
+
+a:hover,
+a:focus {
+    color: #2a6496;
+    text-decoration: underline;
+}
+
+.ul-style {
+    color: #1ABC9C !important;
+    width: 100%;
+    float: left;
+    margin-top: 15px;
+}
+ul.list-inline li {
+    line-height: 16px;
+}
+
+ul.list-inline li.col-xs-2 {
+    width: 16.666666666666664%;
+}
+
+.glyphicon {
+    font-size: 16px;
+    color: #1ABC9C;
+}
+.glyphicon-th-large {
+    border-color: white;
+    border: 1px;
+    background-color: white;
+}
+.foot_btns {
+    text-align: center;
+}
+
+.blue-color {
+    color: #2a6496;
+}
+
+.green-color {
+    color: green;
+}
+
+.light-green-background {
+    background: #6EC30B;
+}
+
+.light-green-background > span {
+    color: #fff;
+}
+
+div.panel-heading .panel-title {
+    font-family: 宋体;
+    font-weight: bolder;
+    color: #1ABC9C !important;
+}
+
+form > .ess-form > ul {
+    margin-top: 20px;
+}
+
+.ess-form > div.panel-heading {
+    background-color: #F1F9F8;
+    height: 45px;
+    line-light: 100%;
+    vertical-align: middle;
+
+    margin-top: 25px;
+
+    border:1px solid #ddd;
+    border-bottom: 1px solid transparent;
+    padding: 10px 15px;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+}
+
+.ess-form > ul > li > label{
+    width: 290px;
+}
+
+.ess-form > ul > li > label{
+    color: #1ABC9C !important;
+    width: 100%;
+    float: left;
+    margin-top: 15px;
+}
+
+button.list {
+    background-color: #1ABC9C !important;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    border: none;
+}
+
+.margin-top30 {
+    margin-top: 30px;
+}
+
+.auto-width.nav-tabs > li {
+    width: auto;
+}
+
+.jgyys-btn span {
+    display: inline-block;
+    padding: 8PX 15PX;
+    color: white;
+    margin-left: 30px;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.jgyys-btn span:nth-child(1) {
+    background-color: #71d398;
+    margin-left: 10px
+}
+
+.jgyys-btn span:nth-child(2) {
+    background-color: #ffcb4f
+}
+
+.jgyys-btn span:nth-child(3) {
+    background-color: #f87773
+}
+
+/*#gantt_here .gantt_container .gantt_tree_content {*/
+    /*line-height: 30px;*/
+/*}*/
+
+
+tr .icon0, div .icon0 {
+    display: inline-block;
+    width: 50px;
+    height: 30px;
+    padding-left: 10px;
+    /*float: right;*/
+    line-height: 34px;
+    position: relative;
+    cursor: pointer;
+}
+
+.icon1 {
+    position: absolute;
+    left: 10px;
+    top: 5px;
+    width: 30px;
+    height: 20px;
+}
+
+.icon2 {
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    background-color: #C81623;
+    font-size: 12px;
+    line-height: 14px;
+    text-align: center;
+    color: #fff;
+    right: 2px;
+    top: -4px;
+    border-radius: 8px;
+}

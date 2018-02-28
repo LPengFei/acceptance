@@ -1,0 +1,101 @@
+﻿<style type="text/css">
+	table{
+		width:96%;
+	}
+</style>
+<p class="MsoNormal">
+	<b> </b> 
+</p>
+<p class="MsoNormal">
+	<b><b> </b></b> 
+</p>
+<p class="MsoNormal">
+	<b><b><b> </b></b></b> 
+</p>
+<p class="MsoNormal">
+	<b><b><b><b> </b></b></b></b>
+</p>
+<p class="MsoNormal">
+	<b><b><b><b>
+	<p class="MsoNormal">
+		<b>&nbsp;</b>
+	</p>
+	<p class="MsoNormal" align="center" style="text-align:center;">
+		工程移交有关单位代表名单<span></span>
+	</p>
+	<div align="center">
+		<table class="MsoNormalTable" border="1" cellspacing="0" cellpadding="0" style="border:none;">
+			<tbody>
+				<tr>
+					<td width="135" style="border:solid windowtext 1.0pt;">
+						<p class="MsoNormal" align="center" style="text-align:center;">
+							<span style="font-size:12.0pt;line-height:150%;font-family:仿宋_GB2312;">单位代表<span></span></span>
+						</p>
+					</td>
+					<td width="106" style="border:solid windowtext 1.0pt;">
+						<p class="MsoNormal" align="center" style="text-align:center;">
+							<span style="font-size:12.0pt;line-height:150%;font-family:仿宋_GB2312;">姓<span>&nbsp; </span>名</span><span style="font-size:12.0pt;line-height:150%;font-family:仿宋_GB2312;"></span>
+						</p>
+					</td>
+					<td width="121" style="border:solid windowtext 1.0pt;">
+						<p class="MsoNormal" align="center" style="text-align:center;">
+							<span style="font-size:12.0pt;line-height:150%;font-family:仿宋_GB2312;">单<span>&nbsp; </span>位</span><span style="font-size:12.0pt;line-height:150%;font-family:仿宋_GB2312;"></span>
+						</p>
+					</td>
+					<td width="121" style="border:solid windowtext 1.0pt;">
+						<p class="MsoNormal" align="center" style="text-align:center;">
+							<span style="font-size:12.0pt;line-height:150%;font-family:仿宋_GB2312;">职务<span>/</span>职称</span><span style="font-size:12.0pt;line-height:150%;font-family:仿宋_GB2312;"></span>
+						</p>
+					</td>
+					<td width="121" style="border:solid windowtext 1.0pt;">
+						<p class="MsoNormal" align="center" style="text-align:center;">
+							<span style="font-size:12.0pt;line-height:150%;font-family:仿宋_GB2312;">签<span>&nbsp; </span>名</span><span style="font-size:12.0pt;line-height:150%;font-family:仿宋_GB2312;"></span>
+						</p>
+					</td>
+				</tr>
+				<#list list as item>
+				<tr>
+					<td width="135" style="border:solid windowtext 1.0pt;">
+						<p class="MsoNormal" align="center" style="text-align:center;">
+							<span style="font-size:12.0pt;line-height:150%;font-family:仿宋_GB2312;">${item.group.value!}</span>
+						</p>
+					</td>
+					<td width="106" style="border:solid windowtext 1.0pt;">
+						<p class="MsoNormal" align="center" style="text-align:center;">
+							<span style="font-size:12.0pt;line-height:150%;font-family:仿宋_GB2312;">${item.xm!}</span>
+						</p>
+					</td>
+					<td width="121" style="border:solid windowtext 1.0pt;">
+						<p class="MsoNormal" align="center" style="text-align:center;">
+							<span style="font-size:12.0pt;line-height:150%;font-family:仿宋_GB2312;">${item.dw!}</span>
+						</p>
+					</td>
+					<td width="121" style="border:solid windowtext 1.0pt;">
+						<p class="MsoNormal" align="center" style="text-align:center;">
+							<span style="font-size:12.0pt;line-height:150%;font-family:仿宋_GB2312;">${item.zw!}</span>
+						</p>
+					</td>
+					<td width="121" style="border:solid windowtext 1.0pt;" onclick="showNativeDetail('${item.group.id!}');">
+						<p class="MsoNormal" align="center" style="text-align:center;">
+							<#if item.qm??>
+								<img style="height: 30;width: 90;" src="${item.qm!}" />
+							</#if>
+						</p>
+					</td>
+				</tr>
+				</#list>
+			</tbody>
+		</table>
+	</div>
+</b></b></b></b>
+</p>
+<p class="MsoNormal">
+	<br />
+</p>
+
+
+<script type="text/javascript">
+	function showNativeDetail(id) {
+		native.groupDetail(id);
+	}
+</script>

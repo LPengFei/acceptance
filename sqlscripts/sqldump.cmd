@@ -1,0 +1,1 @@
+mysqldump -uroot -proot --add-drop-table acceptance k_datasource k_department k_iefield k_iexport k_lookup k_lookup_type k_menu k_model k_model_field> setup.sql

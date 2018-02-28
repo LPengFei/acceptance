@@ -1,0 +1,56 @@
+		/* 澶撮儴寮� */
+		.head{height:80px;background:#1ABC9C;}
+		.logo{float:left;}
+		.logo img{height:79px;}
+		.head .msg{width:220px;height:100%;float:right;position:relative;margin-right:10px;}
+		.msg .show{height:30px;color:#F1D63E;font:600 12px/20px "microsoft yahei";text-align:right;padding:10px 5px 0 5px;}
+		.msg .ctr{height:50px;position: relative;}
+		.ctr button{position: absolute;height:30px;width:90px;background:#0BA98A;border-radius: 5px;color:#DBF2EE;font-size:12px;}
+		.ctr button span{padding-right:5px;}
+		.ctr .btn1{top:10px;left:10px;}
+		.ctr .btn2{right:10px;top:10px;}
+		/* 澶撮儴缁撴潫 */
+		/* 鑿滃崟寮� */
+		/*
+		begin side bar
+		 */
+		.menu{width:18%;background: green;height:100%;min-height:850px;}
+		.list ul li{background-color: green;border:solid 1px blue;}
+		/*
+		end side bar
+		 */
+
+		.menu .title{width:100%;height:50px;border-bottom: 2px solid #3C4049;
+			color:#5A606C;font:500 14px/50px "瀹嬩綋";padding-left:10px;font-weight:600;}
+		.list{width:100%;color:#C5C8D1;}
+		.list ul li:hover{background:#25282E;}
+		.list ul li a{padding-left:10px;color:#C5C8D1;font-size:14px;display:block;font-weight:600;height:45px;line-height:45px;position:relative;text-decoration: none;}
+		.list ul li .inactive{background:url(../img/off.png) no-repeat 88% center !important;}
+		.list ul li .inactives{background:url(../img/on.png) no-repeat 90% center !important;background:#25282E;
+			border-left:5px solid #1ABC9C;color:#fff;} 
+		.list ul li ul{display:none;}
+		.list ul li ul li {background-color:#2C2F37;border:#2C2F37;font-weight: light;}
+		.list ul li ul li ul{display:none;}
+		.list ul li ul li:hover{background:#2C2F37;}
+		.list ul li ul li a{padding-left:20px;font-size:12px;font-weight:400;color:#1ABA9A;}
+		.list ul li ul li a:hover{color:#AFB2BB;}
+		.list a span{padding-right:15px;font-weight:400;}
+		/* 鑿滃崟缁撴潫 */
+		
+		.content{width:82%;background:#f8f8f8;height:820px;overflow:auto;z-index:99;}
+		/* 瀵艰埅寮� */
+		.content .guide{width:100%;background:#DEE8E6;min-height:36px;float:left;postion:absolute;overflow:auto;z-index:999;}
+		.guide ul li{display:block;float:left;background:#DEE8E6;line-height:36px;height:36px;padding:0 30px 0 30px;
+			border-right:1px solid #CED5D4;color:#5F6D6A;font-weight:700;border-radius:3px;}
+		.guide ul li:hover{cursor:pointer;}
+		.guide span{padding-left:10px;}
+		.guide span:hover{color:#000;}
+		.gactive{background-color:#E8EFEE !important;}
+		.hide{display:none;}
+		/* 瀵艰埅缁撴潫 */
+
+		.content .frame{width:100%;height:784px;position:relative;float:left;}
+
+		.content .frame iframe{width:100%;height:100%;position:absolute;top:0;left:0;}
+
+		.foot{height:60px;background:#ccc;}

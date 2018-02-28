@@ -1,0 +1,40 @@
+
+
+/* @workaround underline navigator*/
+.underline-nav {
+    position: relative;
+    float: right;
+}
+.underline-nav > ul {
+    display: table;
+}
+.underline-nav > ul > li {
+    height: 100%;
+    text-align: center;
+    line-height: inherit;
+    margin-bottom: 0px;
+    display: table-cell;
+    vertical-align: middle;
+}
+
+/* @workaround tab above underline*/
+.underline-tab a {
+    outline: none;
+    text-decoration: none;
+    color: #DDDDDD;
+}
+.underline-tab a:hover {
+    color: #fff087;
+}
+.underline-tab li.active a {
+    color: white;
+}
+
+/* @workaround underline */
+.under-line {
+    display: none;
+    position: absolute;
+    height: 3px;
+    bottom: -2px;
+    background-color: gold;
+}

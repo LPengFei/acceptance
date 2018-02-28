@@ -1,0 +1,42 @@
+<style type="text/css" >
+	img{
+	    height: 40px;
+	    width: 60px;
+	}
+</style>
+<p class="MsoNormal" style="text-indent:28.0000pt;">
+	<u>${gcmc}</u>工程已于<u>&nbsp;${jjrq}</u>经工程启动验收委员会认定已具备交接验收条件，交接双方同意办理正式交接，自即日起，按移交的范围和内容由移交单位交付给接收单位，由接收单位使用并负责保管和维护。
+</p>
+<p class="MsoNormal" style="text-indent:28.0000pt;">
+	遗留问题按启动验收委员会的决定由移交单位负责，按清单所列的内容、负责单位和日期的要求按时完成。
+</p>
+<p class="MsoNormal" style="text-indent:28.0000pt;">
+	&nbsp;
+</p>
+<p class="MsoNormal" style="text-align:right;text-indent:28pt;">
+	&nbsp;<#list list as item><img onclick="CallAndroidSign('${item.id}')" src="${item.qm}" /></#list>
+</p>
+<p class="MsoNormal" align="right" style="text-align:right;">
+	<span>年</span> &nbsp;&nbsp;&nbsp;<span>月</span> &nbsp;&nbsp;<span>日</span> &nbsp;
+</p>
+<p class="MsoNormal" style="text-indent:28.0000pt;">
+	<span>附件：</span>1. 工程移交有关单位代表名单
+</p>
+<p class="MsoNormal" style="text-indent:70.0000pt;">
+	2. 移交工程范围
+</p>
+<p class="MsoNormal" style="text-indent:70.0000pt;">
+	3. 移交专用工器具清单
+</p>
+<p class="MsoNormal" style="text-indent:70.0000pt;">
+	4. 移交备品备件清单
+</p>
+<p class="MsoNormal" style="text-indent:70.0000pt;">
+	5. 向生产运行单位移交资料清单
+</p>
+
+<script type="text/javascript">
+	function CallAndroidSign(id) {
+		native.signCallBack(id)
+	}
+</script>

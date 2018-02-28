@@ -1,0 +1,30 @@
+*{padding: 0px;margin: 0px;font-family: '微软雅黑'}
+body{overflow: hidden}
+/*登录*/
+.login-bg{width: 100%}
+.login-bg img{width: 100%}
+.login-wrap{width: 300px;border-radius: 5px;position: absolute;left: 50%;top: 50%;margin-left: -150px;overflow: hidden;background-color: white;padding-bottom: 30px; }
+/*登录头*/
+.login-title{width: 100%;height: 50px;line-height: 50px;text-align: center;color: white;font-size: 18px;position: relative;background-color:#41cac0}
+.login-title span{color: white;font-size: 25px;height: 50px;line-height: 50px;margin-right: 5px;position: absolute;left: 90%;cursor: pointer}
+/*用户名/密码*/
+.login-line{width: 270px;height: 35px;line-height: 35px;margin: 10px 15px 0 15px;border: 1px solid rgba(0, 0, 0, 0.12);border-radius: 5px  }
+.userImg{width: 40px;float: left}
+.lineTop{margin-top: 30px}
+.userImg img{width: 25px;margin: 5px 10px 0 10px}
+.login-line input{width: 200px;border: none;height: 33px;outline: medium}
+.login-yz{width: 160px;margin: 10px 0 0 15px;height: 35px;line-height: 35px;border: 1px solid rgba(0, 0, 0, 0.12);border-radius: 5px;float: left}
+.login-yz input{width: 90px;border: none;height: 33px;outline: medium}
+.login-yzm{display: block;width: 95px;border: 1px solid rgba(0, 0, 0, 0.12);border-radius: 5px;float: left;height: 35px;line-height: 35px;margin: 10px 0 0 10px;font-weight: 600}
+/*四个验证码*/
+.login-yzm a{width: 20px;height: 20px;display: block;float: left;-webkit-transform: skew(20deg,10deg);}
+.login-yzm a:nth-child(1){color:#00028a;margin-left: 10px;}
+.login-yzm a:nth-child(2){color:#006400}
+.login-yzm a:nth-child(3){color:#0d8983}
+.login-yzm a:nth-child(4){color:#fd0000}
+.login-check{width: 270px;height: 35px;line-height: 35px;margin: 10px 15px 0 20px;float: left;position: relative}
+.login-check label{margin-left: 18px;font-size: 12px}
+.login-check input{position: absolute;top: 13px}
+.login-check a{display: block;float: right;color:#66d2c9;font-size: 14px}
+.login-btn{width: 260px;;margin: 10px 15px 0 20px;height: 40px;border-radius: 5px;background-color:#f67a6e;line-height: 40px;color: white;float: left;text-align: center;cursor: pointer}
+.login-btn:hover{background-color: #f64205;transition: all .3s linear}

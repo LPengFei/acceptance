@@ -1,0 +1,40 @@
+*{padding: 0px;margin: 0px;font-family: '微软雅黑'}
+body{overflow: hidden}
+/*logo*/
+.ls_logo{position: absolute;left: 20%;width: 230px;z-index: 999;top: 50px}
+.ls_logo img{width: 230px}
+/*登录*/
+.login_bg{width: 100%;}
+.login_bg img{width: 100%}
+.login_wrap{width: 700px;position: absolute;left: 50%;top: 50%;margin-left: -350px;box-shadow: 0 2px 8px rgba(0, 0, 0, 0.55)  }
+/*左侧区域*/
+.login_left{width: 370px;background-color: white;float: left;padding-bottom: 30px}
+/*登录头*/
+.login_left h2{text-align: center;width: 320px;margin: 20px 25px 0 25px}
+.login_line{width: 320px;margin: 10px 25px 0 25px;height: 35px;background-color:#e8ecf0;border-radius: 5px}
+.login_line:first-child{margin-top: 20px}
+.login_img{width: 40px;float: left;height: 35px}
+.login_line img{width: 30px;margin: 5px 0 0 5px}
+.login_line input{width: 250px;border: none;height: 33px;outline: medium;background-color:#e8ecf0 }
+.login_top{margin-top: 30px}
+/*验证码*/
+.login_yz{width: 210px;margin: 10px 0 0 25px;height: 35px;line-height: 35px;border-radius: 5px;float: left;background-color: #e8ecf0}
+.login_yz img{width: 30px;margin: 2px 0 0 5px}
+.login_yz input{width: 90px;border: none;height: 33px;outline: medium;background-color: #e8ecf0}
+.login_yzm{display: block;width: 95px;border: 1px solid rgba(0, 0, 0, 0.12);border-radius: 5px;float: left;height: 35px;line-height: 35px;margin: 10px 0 0 10px;font-weight: 600}
+.login_yzm a{width: 20px;height: 20px;display: block;float: left;-webkit-transform: skew(20deg,10deg);}
+.login_yzm a:nth-child(1){color:#00028a;margin-left: 10px;}
+.login_yzm a:nth-child(2){color:#006400}
+.login_yzm a:nth-child(3){color:#0d8983}
+.login_yzm a:nth-child(4){color:#fd0000}
+/*登录、重置按钮*/
+.login_btnLogin{float: left;width: 140px;height: 40px;background-color:#3a97e5;border-radius: 5px;margin: 20px 0 0 25px;color: white;line-height: 40px;text-align: center;cursor: pointer}
+.login_btnReset{float: right;width: 140px;height: 40px;background-color:#e5b73a;border-radius: 5px;margin: 20px 25px 0 0;color: white;line-height: 40px;text-align: center;cursor: pointer}
+.login_btnLogin:hover{background-color: #1d54e5 ;transition: all .3s linear}
+.login_btnReset:hover{background-color: #e58c22;transition: all .3s linear}
+.login_right{float: left;width: 330px;background-color: #3a97e5;padding-top: 20px}
+.login_rightModel{float: left;width: 140px;height: 30px;line-height: 30px;color: white;cursor: pointer;background-color:#41a8ff;border-radius: 5px;margin: 15px 0 0 15px;font-size: 13px;}
+.login_rightModel span{display: block;width: 5px;height: 5px;border-radius: 50%;background-color: white;float: left;margin: 13px 5px 0 10px}
+.login_rightModel:hover{background-color: #1a6aff;transition: all .3s linear}
+/*公司信息*/
+.compangCopy{position: fixed;bottom: 30px;width: 400px;height: 20px;line-height: 20px;color:#5b774d;font-size: 12px;left: 50%;margin-left: -200px}

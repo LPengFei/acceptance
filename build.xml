@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/2002/xmlspec/dtd/2.10/xmlspec.dtd">
+<project basedir="." default="deploy" name="acceptance" xmlns:sonar="antlib:org.sonar.ant">
+	<property name="tomcat.home" value="D:\apache-tomcat-7"/>
+              	
+    <!-- tomcat下的jar包，可以不指明 -->
+    <path id="classpath">
+    	<fileset dir="${basedir}/WebRoot/WEB-INF/lib">  
+        	<include name="**/*.jar"/>  
+    	</fileset>
+    	<fileset dir="${tomcat.home}/lib">  
+        	<include name="**/*.jar"/>  
+    	</fileset>
+    </path>
+              	
+    <!-- 初始化 -->
+    <target name="init">
+    	<echo message="${ant.project.name}: init..."/>
+        <mkdir dir="${basedir}/build/classes"/>
+    	<!-- scr 源目录 -->
+        <copy includeemptydirs="false" todir="${basedir}/build/classes">
+            <fileset dir="${basedir}/src">
+                <exclude name="**/*.java"/>
+            </fileset>
+        </copy>
+    	<!-- resources 源目录 -->
+        <copy includeemptydirs="false" todir="${basedir}/build/classes">
+            <fileset dir="${basedir}/resource">
+                <exclude name="**/*.java"/>
+            </fileset>
+        </copy>
+    </target>
+              	
+    <!-- 清除编译文件 -->
+    <target name="clean">
+    	<echo message="${ant.project.name}: clean..."/>
+        <delete dir="${basedir}/build/classes"/>
+    </target>
+        
+    <!-- 编译 -->
+    <target depends="init" name="build">
+        <echo message="${ant.project.name}: build..."/>
+        <javac encoding="utf-8" destdir="${basedir}/build/classes" includeantruntime="false" executable="${javac.executable}" >
+            <src path="${basedir}/src"/>
+            <src path="${basedir}/resource"/>
+            <classpath refid="classpath"/>
+        </javac>
+    </target>
+       
+    <!-- 打war包 -->
+  	<target name="war" depends="build" description="打war包，不将java文件打入包内">
+    	<echo message="${ant.project.name}: war..."/>
+        <war warfile="${ant.project.name}.war" webxml="${basedir}/WebRoot/WEB-INF/web.xml"> 
+        	<!-- <lib dir="${basedir}/WebRoot/WEB-INF/lib"/>   -->
+            <classes dir="${basedir}/build/classes"/>  
+            <fileset dir="${basedir}/WebRoot"/>  
+        </war>  
+    </target>  
+    
+    <!-- copy war包 tomcat的deploy目录 -->  
+    <target name="deploy" description="部署项目">  
+        <echo>部署项目</echo>  
+        <copy todir="${tomcat.home}/webapps/${ant.project.name}">
+            <fileset dir="${basedir}/target/${ant.project.name}">
+            </fileset>
+        </copy>
+        <copy todir="${tomcat.home}/webapps/${ant.project.name}/WEB-INF/classes">
+            <fileset dir="${basedir}/target/classes">
+            </fileset>
+        </copy>
+    </target>  
+    
+     <target name="stop">  
+        <echo>停止服务：${service}</echo>  
+        <exec executable="cmd" dir="${tomcat.home}/bin" failonerror="false"   
+                    output="${log.file}" append="true" >  
+            <!-- <arg value="/c" /> -->     
+            <env key="CATALINA_HOME" path="${tomcat.home}"/>  
+            <arg value="/c net stop ${service}" />     
+        </exec>  
+    </target>  
+  
+    <target name="start">  
+        <echo>启动服务：${service}</echo>  
+        <delete failonerror="false" dir="${tomcat.home}/logs" />  
+        <delete failonerror="false" dir="${tomcat.home}/work" />  
+        <exec executable="cmd" dir="${tomcat.home}/bin" 
+                    output="${log.file}" append="true" >  
+             <!-- <arg value="/c" /> -->    
+             <env key="CATALINA_HOME" path="${tomcat.home}"/>  
+             <arg value="/c net start ${service}" />     
+        </exec>  
+    </target>  
+    
+    <!-- sonar -->
+	<property name="sonar.host.url" value="http://192.168.199.10:9999" />
+	<property name="sonar.forceAuthentication" value="true" />
+	<property name="sonar.login" value="admin" />
+	<property name="sonar.password" value="admin" />
+	<!-- <property name="sonar.scm.url" value="scm:svn:http://zhoulong:zhoulong@svn.cnksi.com:80" /> -->
+	<property name="sonar.projectKey" value="com.cnksi:${ant.project.name}" />
+	<property name="sonar.projectName" value="${ant.project.name}" />
+	<property name="sonar.projectVersion" value="1.0" />
+	<property name="sonar.sourceEncoding" value="UTF-8" />
+	<property name="sonar.modules" value="java-module,javascript-module,html-module" />
+	
+	<!-- Java module -->
+	<property name="java-module.sonar.projectName" value="Java Module" />  
+	<property name="java-module.sonar.language" value="java" />  
+	<property name="java-module.sonar.sources" value="." />  
+	<property name="java-module.sonar.projectBaseDir" value="src" />
+
+	<!-- JavaScript module -->
+	<property name="javascript-module.sonar.projectName" value="JavaScript Module" />
+	<property name="javascript-module.sonar.language" value="js" />  
+	<property name="javascript-module.sonar.sources" value="js,equipmenttest/assets/js" />  
+	<property name="javascript-module.sonar.projectBaseDir" value="WebRoot/html" />
+
+	<!-- Html module -->
+	<property name="html-module.sonar.projectName" value="Html Module" />
+	<property name="html-module.sonar.language" value="web" />
+	<property name="html-module.sonar.sources" value="html" />
+	<property name="html-module.sonar.projectBaseDir" value="WebRoot" />
+	<!--
+	<property name="sonar.sources" value="src" />
+	<property name="sonar.language" value="java" />
+	<property name="sonar.java.libraries" value="WebRoot/WEB-INF/lib/*.jar,${tomcat.home}/lib/*.jar" />
+	-->
+	<!-- Define the SonarQube target -->
+	<target name="sonar">
+	    <taskdef uri="antlib:org.sonar.ant" resource="org/sonar/ant/antlib.xml">
+	        <!-- Update the following line, or put the "sonarqube-ant-task-*.jar" file in your "$HOME/.ant/lib" folder -->
+	        <classpath path="d:/apache-ant-1.9.4/lib/sonarqube-ant-task-2.4.1.jar" />
+	    </taskdef>
+	 
+	    <!-- Execute the SonarQube analysis -->
+	    <sonar:sonar />
+	</target>
+</project>

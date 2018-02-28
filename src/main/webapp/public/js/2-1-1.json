@@ -1,0 +1,28 @@
+{
+	"status": "ok",
+	"data": {
+		"title": " ",
+		"type": "combinations",
+		"data": [],
+		"categories": ["高坝子","竹根","阳光","莲池","平桥","峨山","斑竹湾"],
+		"series": [
+			{
+				"name": "越限台数",
+				"type": "column",
+				"data": [10, 10, 14, 8, 7, 8, 10],
+				"data1": null
+			}, {
+				"name": "正常台数",
+				"type": "column",
+				"data": [6, 14, 12, 15, 14, 17, 20],
+				"data1": null
+			}, {
+				"name": "正常台数",
+				"type": "column",
+				"data": [6, 24, 12, 5, 9, 7, 13],
+				"data1": null
+			} 
+		],
+		"drilldownSeries": []
+	}
+}
